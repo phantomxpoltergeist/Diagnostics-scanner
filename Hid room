@@ -1,0 +1,20 @@
+def open_creator_menu():
+    print("\nCREATOR MODE UNLOCKED")
+    print("────────────────────")
+
+    if not os.path.exists(LOG_FILE):
+        print("No logs available.")
+        return
+
+    with open(LOG_FILE, "r") as f:
+        logs = json.load(f)
+
+    print(f"Total Sessions Logged: {len(logs)}\n")
+
+    for i, log in enumerate(logs, 1):
+        print(f"Session {i}")
+        print(f"  Time: {log['timestamp']}")
+        print(f"  Device Name: {log['device_name']}")
+        print(f"  IP Address: {log['ip_address']}")
+        print(f"  Issue: {log['issue']}")
+        print("")
