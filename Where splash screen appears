@@ -1,0 +1,2 @@
+exec(SPLASH_SCREEN_CODE)
+menu()
