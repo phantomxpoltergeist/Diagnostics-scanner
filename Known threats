@@ -1,0 +1,11 @@
+KNOWN_MALWARE_SIGNATURES = {
+    "wannacry": "Ransomware",
+    "ryuk": "Ransomware",
+    "emotet": "Trojan",
+    "trickbot": "Trojan",
+    "keylogger": "Keylogger",
+    "njrat": "Remote Access Trojan",
+    "darkcomet": "Remote Access Trojan",
+    "miner": "Cryptominer",
+    "coinhive": "Cryptominer"
+}
