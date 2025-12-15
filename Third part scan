@@ -1,0 +1,16 @@
+def detect_unknown_third_parties():
+    unknown = []
+
+    for proc in psutil.process_iter(['name', 'exe']):
+        try:
+            if proc.info['exe'] and any(p in proc.info['exe'] for p in SUSPICIOUS_PATHS):
+                unknown.append({
+                    "Type": "Suspicious Third-Party",
+                    "Process": proc.info['name'],
+                    "Path": proc.info['exe'],
+                    "Confidence": "Low–Medium"
+                })
+        except:
+            pass
+
+    return unknown
