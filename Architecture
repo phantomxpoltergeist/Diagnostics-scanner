@@ -1,0 +1,7 @@
+diagnostics_scanner/
+│
+├── network_info.py      # IPs, WiFi, interfaces, gateway
+├── system_info.py       # OS, CPU, RAM, disk, uptime
+├── connectivity.py      # ping, reachability
+├── ports.py             # basic port scan
+├── main.py              # menu + orchestration
