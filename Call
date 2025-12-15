@@ -1,0 +1,3 @@
+if __name__ == "__main__":
+    antivirus_scan_on_launch()
+    menu()
