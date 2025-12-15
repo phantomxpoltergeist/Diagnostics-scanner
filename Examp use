@@ -1,0 +1,12 @@
+device_name = input("Enter a name for this device: ").strip()
+
+issue_summary = "No critical issues detected"
+# or something inferred from diagnostics
+
+log_entry = create_log_entry(
+    device_name,
+    get_public_ip(),
+    issue_summary
+)
+
+write_log(log_entry)
