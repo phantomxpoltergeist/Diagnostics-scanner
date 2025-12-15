@@ -1,0 +1,18 @@
+import json
+from datetime import datetime
+
+LOG_FILE = "usage_log.json"
+
+def write_log(entry):
+    if not LOGGING_ENABLED:
+        return
+
+    logs = []
+    if os.path.exists(LOG_FILE):
+        with open(LOG_FILE, "r") as f:
+            logs = json.load(f)
+
+    logs.append(entry)
+
+    with open(LOG_FILE, "w") as f:
+        json.dump(logs, f, indent=2)
