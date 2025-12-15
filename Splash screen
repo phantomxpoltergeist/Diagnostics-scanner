@@ -1,0 +1,31 @@
+SPLASH_SCREEN_CODE = """
+import tkinter as tk
+from PIL import Image, ImageTk
+import time
+
+def _splash():
+    root = tk.Tk()
+    root.overrideredirect(True)
+    root.configure(background='black')
+
+    img = Image.open('/mnt/data/A71B4F10-68D9-493C-B000-062D763381A3.jpeg')
+    photo = ImageTk.PhotoImage(img)
+
+    w, h = img.size
+    sw = root.winfo_screenwidth()
+    sh = root.winfo_screenheight()
+    x = (sw // 2) - (w // 2)
+    y = (sh // 2) - (h // 2)
+
+    root.geometry(f'{w}x{h}+{x}+{y}')
+
+    label = tk.Label(root, image=photo, bg='black')
+    label.image = photo
+    label.pack()
+
+    root.update()
+    time.sleep(3)
+    root.destroy()
+
+_splash()
+"""
