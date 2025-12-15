@@ -1,0 +1,21 @@
+def antivirus_process_scan():
+    findings = []
+
+    for proc in psutil.process_iter(['pid', 'name', 'exe']):
+        try:
+            name = proc.info['name'].lower()
+
+            for signature, category in KNOWN_MALWARE_SIGNATURES.items():
+                if signature in name:
+                    findings.append({
+                        "Type": category,
+                        "Process": proc.info['name'],
+                        "PID": proc.info['pid'],
+                        "Path": proc.info['exe'],
+                        "Confidence": "High (name match)"
+                    })
+
+        except (psutil.NoSuchProcess, psutil.AccessDenied):
+            continue
+
+    return findings
