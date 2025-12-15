@@ -1,0 +1,5 @@
+def scan_remote_ip(ip):
+    print("\nREMOTE IP DIAGNOSTICS")
+    print("─────────────────────")
+    print(f"Target IP: {ip}")
+    print(f"Reachable: {'Yes' if ping(ip) else 'No'}")
