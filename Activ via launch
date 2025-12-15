@@ -1,0 +1,21 @@
+def antivirus_scan_on_launch():
+    print("\nANTIVIRUS INITIALIZING")
+    print("─────────────────────")
+
+    threats = []
+    threats += antivirus_process_scan()
+    threats += antivirus_startup_scan()
+    threats += detect_unknown_third_parties()
+
+    if not threats:
+        print("✓ No known threats detected.")
+        return
+
+    print(f"⚠ {len(threats)} potential issue(s) found:\n")
+
+    for t in threats:
+        print(f"Type: {t['Type']}")
+        for k, v in t.items():
+            if k != "Type":
+                print(f"  {k}: {v}")
+        print("")
