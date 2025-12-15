@@ -1,0 +1,7 @@
+def create_log_entry(device_name, ip, issue_summary):
+    return {
+        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "device_name": device_name,
+        "ip_address": ip,
+        "issue": issue_summary
+    }
