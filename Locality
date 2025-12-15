@@ -1,0 +1,21 @@
+def scan_local_device():
+    print("\nDEVICE DIAGNOSTICS REPORT")
+    print("────────────────────────")
+
+    print(f"Hostname: {get_hostname()}")
+    print(f"Wi-Fi Network (SSID): {get_wifi_ssid()}")
+    print(f"Local IP: {get_local_ip()}")
+    print(f"Public IP: {get_public_ip()}")
+    print(f"MAC Address: {get_mac_address()}")
+
+    print("\nSystem Information:")
+    for k, v in get_system_info().items():
+        print(f"  {k}: {v}")
+
+    print("\nNetwork Interfaces:")
+    for iface, ips in get_interfaces().items():
+        print(f"  {iface}: {', '.join(ips) if ips else 'No IPv4'}")
+
+    print("\nConnectivity:")
+    print(f"  Gateway reachable: {'Yes' if ping(get_local_ip()) else 'No'}")
+    print(f"  Internet reachable: {'Yes' if ping('8.8.8.8') else 'No'}")
