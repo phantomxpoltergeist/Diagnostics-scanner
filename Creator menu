@@ -1,0 +1,8 @@
+CREATOR_PASSWORD = "07/31/25"
+
+def creator_menu_prompt():
+    print("\nSearch Bar (press Enter to skip)")
+    query = input("> ").strip()
+
+    if query == CREATOR_PASSWORD:
+        open_creator_menu()
