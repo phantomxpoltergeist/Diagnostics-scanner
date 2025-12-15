@@ -1,0 +1,6 @@
+SUSPICIOUS_PATHS = [
+    "AppData\\Roaming",
+    "AppData\\Local\\Temp",
+    "/tmp",
+    "/var/tmp"
+]
