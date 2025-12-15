@@ -1,0 +1,5 @@
+def ping(target):
+    param = "-n" if platform.system().lower() == "windows" else "-c"
+    command = ["ping", param, "3", target]
+    result = subprocess.run(command, stdout=subprocess.DEVNULL)
+    return result.returncode == 0
