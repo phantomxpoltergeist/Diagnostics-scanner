@@ -1,0 +1,56 @@
+SESSION_ACTIVE = False
+PRIVACY_MODE = False
+USER_LOGGED = False
+
+def collect_user_info():
+    print("\nDevice Identification")
+    device_name = input("Enter a device name: ").strip()
+    ip = get_public_ip()
+
+    issue_summary = "Pending diagnostics"
+
+    entry = create_log_entry(device_name, ip, issue_summary)
+    write_log(entry)
+
+    return device_name, ip
+
+import threading
+import hashlib
+import time
+
+def generate_session_token():
+    seed = f"{time.time()}{uuid.uuid4()}"
+    return hashlib.sha256(seed.encode()).hexdigest()[:16]
+
+def privacy_session_loop():
+    global SESSION_ACTIVE
+
+    while SESSION_ACTIVE:
+        token = generate_session_token()
+        print(f"[Privacy Mode] Session token rotated: {token}")
+        time.sleep(30)
+
+import threading
+import hashlib
+import time
+
+def generate_session_token():
+    seed = f"{time.time()}{uuid.uuid4()}"
+    return hashlib.sha256(seed.encode()).hexdigest()[:16]
+
+def privacy_session_loop():
+    global SESSION_ACTIVE
+
+    while SESSION_ACTIVE:
+        token = generate_session_token()
+        print(f"[Privacy Mode] Session token rotated: {token}")
+        time.sleep(30)
+
+def start_privacy_mode():
+    global SESSION_ACTIVE, PRIVACY_MODE
+
+    PRIVACY_MODE = True
+    SESSION_ACTIVE = True
+
+    thread = threading.Thread(target=privacy_session_loop, daemon=True)
+    thread.start()
