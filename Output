@@ -1,0 +1,9 @@
+ANTIVIRUS INITIALIZING
+─────────────────────
+⚠ 1 potential issue found:
+
+Type: Trojan
+Process: emotet_service.exe
+PID: 4132
+Path: C:\Users\...\AppData\Roaming\
+Confidence: High (name match)
