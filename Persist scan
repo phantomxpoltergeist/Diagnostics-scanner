@@ -1,0 +1,22 @@
+def antivirus_startup_scan():
+    suspicious = []
+
+    if platform.system().lower() == "windows":
+        startup_dirs = [
+            os.getenv("APPDATA") + "\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
+        ]
+    else:
+        startup_dirs = ["~/.config/autostart"]
+
+    for path in startup_dirs:
+        path = os.path.expanduser(path)
+        if os.path.exists(path):
+            for file in os.listdir(path):
+                suspicious.append({
+                    "Type": "Persistence Mechanism",
+                    "Item": file,
+                    "Location": path,
+                    "Confidence": "Medium"
+                })
+
+    return suspicious
