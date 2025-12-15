@@ -1,0 +1,5 @@
+def request_logging_consent():
+    print("\nUsage Logging")
+    print("This tool can store a local diagnostic log (device name, IP, issue summary).")
+    choice = input("Allow local logging? (yes/no): ").strip().lower()
+    return choice == "yes"
